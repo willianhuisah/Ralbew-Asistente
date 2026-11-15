@@ -2,7 +2,15 @@ name: Ralbew Cloud Vigilante 24/7
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Se ejecuta automáticamente cada 5 minutos
+    # Horarios exactos en UTC (Perú = UTC-5) para evitar throttling de GitHub Actions
+    - cron: '2 13 * * *'       # 08:02 AM Hora Perú (pagos mensuales fijos y alertas matutinas)
+    - cron: '2 18 * * 4'       # 01:02 PM Jueves Perú
+    - cron: '2 19 * * 1'       # 02:02 PM Lunes Perú
+    - cron: '2 21 * * 2,3,5'   # 04:02 PM Martes, Miércoles y Viernes Perú
+    - cron: '2 0 * * 4,6'      # 07:02 PM Miércoles y Viernes Perú
+    # Barrido periódico cada 20 min durante la jornada activa en Perú (08:00 AM - 11:40 PM)
+    - cron: '*/20 13-23 * * *'
+    - cron: '*/20 0-4 * * *'
   workflow_dispatch:      # Permite probarlo manualmente cuando quieras con un botón en GitHub
 
 jobs:
