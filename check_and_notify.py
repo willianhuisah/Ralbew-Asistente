@@ -196,7 +196,7 @@ def enviar_whatsapp(mensaje: str, destinatario: str = DESTINATARIO) -> tuple[boo
 
     # Paso A: Plantillas oficiales 24/7 con parámetro {{1}}
     candidatos_tpl = []
-    for t_name in [os.environ.get("WHATSAPP_TEMPLATE_NAME", "").strip(), "recordatorio_ralbew", "reporte_semanal_mto"]:
+    for t_name in [os.environ.get("WHATSAPP_TEMPLATE_NAME", "").strip(), "recordatorio_ralbew", "aviso_ralbew"]:
         if t_name and t_name not in candidatos_tpl:
             candidatos_tpl.append(t_name)
 
